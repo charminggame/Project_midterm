@@ -30,38 +30,27 @@ $(function () {
 
 document.addEventListener('init', function(event) {
     var page = event.target;
-
+    
     if (page.id === 'page1') {
         page.querySelector('#a1').onclick = function() {
-            document.querySelector('#myNavigator').pushPage('views/Adventure1.html', { data: { title: 'Page 2' } });
+            test()
+            document.querySelector('#myNavigator').pushPage('views/Adventure1.html');
         };
-
+        
         page.querySelector('#a6').onclick = function() {
-            document.querySelector('#myNavigator').pushPage('views/Comedy1.html', { data: { title: 'Page 2' } });
+            test()
+            document.querySelector('#myNavigator').pushPage('views/Comedy1.html');
         };
 
         page.querySelector('#a11').onclick = function() {
-            document.querySelector('#myNavigator').pushPage('views/Family1.html', { data: { title: 'Page 2' } });
+            test()
+            document.querySelector('#myNavigator').pushPage('views/Family1.html');
         };
-    } else if (page.id === 'page2') {
+    }
+    else if (page.id === 'page2') {
         page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
     }
 });
-
-
-// window.fn = {};
-
-// window.fn.open = function() {
-//   var menu = document.getElementById('menu');
-//   menu.open();
-// };
-
-// window.fn.load = function(page) {
-//   var content = document.getElementById('content');
-//   var menu = document.getElementById('menu');
-//   content.load(page)
-//     .then(menu.close.bind(menu));
-// };
 
 
 window.fn = {};
