@@ -26,22 +26,6 @@ $(function () {
             });
     });
 
-    var db = firebase.firestore();
-    db.collection("movie")
-        .get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                var card = ` <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="${doc.data().Poster}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">${doc.data().Title}</h5>
-          <p class="card-text">${doc.data().Detail}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>`;
-                $("#list").append(card);
-            });
-        })
-
 })
 
 document.addEventListener('init', function(event) {
@@ -52,11 +36,11 @@ document.addEventListener('init', function(event) {
             document.querySelector('#myNavigator').pushPage('views/Adventure1.html', { data: { title: 'Page 2' } });
         };
 
-        page.querySelector('#c1').onclick = function() {
+        page.querySelector('#a6').onclick = function() {
             document.querySelector('#myNavigator').pushPage('views/Comedy1.html', { data: { title: 'Page 2' } });
         };
 
-        page.querySelector('#f1').onclick = function() {
+        page.querySelector('#a11').onclick = function() {
             document.querySelector('#myNavigator').pushPage('views/Family1.html', { data: { title: 'Page 2' } });
         };
     } else if (page.id === 'page2') {
