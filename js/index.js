@@ -27,3 +27,17 @@ $(function () {
     });
 
 })
+
+// const snapshot = await db.collection('movie').get();
+// snapshot.forEach((doc) => {
+//   console.log(doc.id, '=>', doc.data());
+// });.
+
+$("#signout").click(function () {
+    firebase.auth().signOut()
+        .then(function () {
+            // Sign-out successful.
+        }).catch(function (error) {
+            // An error happened.
+        });
+});
