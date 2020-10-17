@@ -119,3 +119,20 @@ body>*+* {
     margin-bottom: 3px;
     background-color: black;
 }
+
+.box_F{
+    box-shadow: 0 2px 10px 1px #444444;
+    background-size: 200% 100%;
+    /*background-image: linear-gradient(to right,rgb(161, 98, 98) 0%,#94382c00 51%,#694134 50%);*/
+    
+ 
+    
+}
+.margin{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.gg{
+    display: flex;
+}
