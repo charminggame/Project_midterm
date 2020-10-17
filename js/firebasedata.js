@@ -7,7 +7,12 @@ function test() {
                     <B>${doc.data().Title}</B>
                     <p>
                         ${doc.data().Detail}
-                    </p>`;
+                    </p>
+                    <h1>Trailer</h1>
+                    <iframe src="${doc.data().Trailer}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                    `;
                     $("#D" + c).append(card);
                 
             });
@@ -22,7 +27,8 @@ $(function () {
         querySnapshot.forEach((doc) => {
                 var c = `${doc.data().N}`
                 var card = ` <img src="${doc.data().Poster}" width="380" height="480" id="a1">
-                <div class="nmovie"><B>${doc.data().Title}</B> </div>`;
+                <div class="nmovie"><B>${doc.data().Title}</B> </div>
+                `;
                 $("#a" + c).append(card);
             });
         })
