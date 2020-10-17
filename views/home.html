@@ -4,7 +4,8 @@
     <ons-page id="page1">
       <div class="container">
         <b>Adventure</b>
-      <ons-carousel swipeable auto-scroll overscrollable>
+      <ons-carousel swipeable overscrollable animation=“fade”
+      animation-options="{duration: 1.0, delay: 0, timing: ‘ease-in’}">
         <ons-carousel-item>
           <div id="a1"></div>
         </ons-carousel-item>
@@ -25,8 +26,9 @@
   
         <br>
       <div class="container">
-        <b>Comedy</b>
-      <ons-carousel swipeable auto-scroll overscrollable>
+        <b>Recommend</b>
+      <ons-carousel swipeable overscrollable animation=“fade”
+      animation-options="{duration: 1.0, delay: 0, timing: ‘ease-in’}" >
         <ons-carousel-item>
           <div id="a6"></div>
         </ons-carousel-item>
@@ -47,8 +49,9 @@
   
       <br>
       <div class="container">
-        <b>Comedy</b>
-      <ons-carousel swipeable auto-scroll overscrollable>
+        <b>Other</b>
+      <ons-carousel swipeable overscrollable animation=“fade”
+      animation-options="{duration: 1.0, delay: 0, timing: ‘ease-in’}">
         <ons-carousel-item item-width="100px">
           <div id="a11"></div>
         </ons-carousel-item>
@@ -65,8 +68,10 @@
             <div id="a15"></div>
           </ons-carousel-item> -->
         </ons-carousel>
+        <br>
+      <button id = "test" onclick="test2()">asdsad</button>
       </div>
-  
+      
     </ons-page>
   </template>
 </ons-page>

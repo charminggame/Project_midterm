@@ -25,7 +25,6 @@ $(function () {
                 // An error happened.
             });
     });
-
 })
 
 function signout() {
@@ -135,3 +134,18 @@ $(function () {
         )
     })
 })
+
+function test2(){
+    var db = firebase.firestore();
+    var Up = db.collection("Profile").doc("charminggame@hotmail.com");
+    Up.update({
+        regions: firebase.firestore.FieldValue.arrayUnion("1")
+    });
+    then(function() { 
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+    
+}
