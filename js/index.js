@@ -6,7 +6,7 @@ $(function () {
             displayName = user.displayName;
             email = user.email;
             photoUrl = user.photoURL;
-            console.log(displayName, email, photoUrl);
+            console.log(email);
 
             $("#username").text(email);
             $("#displayname").text(displayName);
@@ -27,6 +27,15 @@ $(function () {
     });
 
 })
+
+function signout() {
+    firebase.auth().signOut()
+            .then(function () {
+                // Sign-out successful.
+            }).catch(function (error) {
+                // An error happened.
+            });
+}
 
 document.addEventListener('init', function(event) {
     var page = event.target;
@@ -49,6 +58,11 @@ document.addEventListener('init', function(event) {
     }
     else if (page.id === 'page2') {
         page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+    }
+    else if (page.id === 'profile'){
+        page.querySelector('#signout').onclick = function() {
+            signout()
+        }
     }
 });
 
