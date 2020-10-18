@@ -3,7 +3,7 @@ function test() {
     db.collection("movie").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 var c = `${doc.data().N}`
-                var card = ` <img src="${doc.data().Poster} width="100%"">
+                var card = ` <img src="${doc.data().Poster}" width="100%">
                     <B>${doc.data().Title}</B>
                     <p>
                         ${doc.data().Detail}
