@@ -171,13 +171,16 @@ function Addremove(NMovie) {
                                 .catch(function (error) {
                                     console.error("Error updating document: ", error);
                                 });
-                        }else {
-                        $("#datafavorite").empty();
-                        favorite()
-                    }}
+                        }
+
+                    }
 
                 }
                 )
+
+            }).then(function () {
+                $("#datafavorite").empty();
+                favorite()
             })
         }
     })
