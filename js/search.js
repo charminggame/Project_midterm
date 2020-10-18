@@ -22,7 +22,7 @@ function Searchmovie() {
     </div>
     <div class="col">
       <div class="card-body">
-      <button type="button" class="btn btn-outline-dark" id="b5" style="width: 80px;" onclick="buttonsearch(0)">All</button>
+        <ons-icon icon="md-favorite" size="40px" onclick="Addremove(${doc.data().N})"></ons-icon>
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@ function buttonsearch(N) {
     </div>
     <div class="col">
       <div class="card-body">
-        <ons-icon icon="md-favorite" size="40px" onclick="test2(${doc.data().N})"></ons-icon>
+        <ons-icon icon="md-favorite" size="40px" onclick="Addremove(${doc.data().N})"></ons-icon>
       </div>
     </div>
   </div>

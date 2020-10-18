@@ -16,13 +16,14 @@ $(function () {
                     if (email === Pemail) {
                         $("#H").append(pf);
                     }else if (email.toLowerCase().indexOf("gmail") != -1) {
-                        var pf = `
+                        var pfg = `
                             <img class="img" src="`+user.photoUR+`" width="100" height="100">
                             <br>
                             <div>
                                 <B>`+user.displayName+`</B>
                             </div>
             `;
+            $("#H").append(pfg);
                     }
                 }
             });

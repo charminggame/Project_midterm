@@ -6,7 +6,6 @@ $(function () {
             displayName = user.displayName;
             email = user.email;
             photoUrl = user.photoURL;
-            console.log(email);
 
             $("#username").text(email);
             $("#displayname").text(displayName);
@@ -41,17 +40,17 @@ document.addEventListener('init', function (event) {
 
     if (page.id === 'page1') {
         page.querySelector('#a1').onclick = function () {
-            test()
+            test1()
             document.querySelector('#myNavigator').pushPage('views/Adventure1.html');
         };
 
         page.querySelector('#a6').onclick = function () {
-            test()
+            test1()
             document.querySelector('#myNavigator').pushPage('views/Comedy1.html');
         };
 
         page.querySelector('#a11').onclick = function () {
-            test()
+            test1()
             document.querySelector('#myNavigator').pushPage('views/Family1.html');
         };
     }
@@ -62,7 +61,7 @@ document.addEventListener('init', function (event) {
         page.querySelector('#signout').onclick = function () {
             signout()
         }
-    }   
+    }
     else if (page.id === 'favorite') {
         favorite()
     }
@@ -138,31 +137,48 @@ $(function () {
     })
 })
 
-function test2(NMovie) {
-    var db = firebase.firestore();
-    var Up = db.collection("Profile").doc("charminggame@hotmail.com");
-    db.collection("Profile").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            var Pemail = `${doc.data().Email}`
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
+function Addremove(NMovie) {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            var db = firebase.firestore();
+            var Up = db.collection("Profile").doc(user.email);
+            db.collection("Profile").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    var Pemail = `${doc.data().Email}`
                     var email = user.email;
                     if (email === Pemail) {
-                        for(let i = 0; i < 16 ; i++){
-                        if (String(NMovie).indexOf(String(`${doc.data().Favorite[i]}`)) != -1) {
-                            Up.update({
-                                Favorite: firebase.firestore.FieldValue.arrayUnion(NMovie)
-                            })
-                        } else if (String(NMovie).indexOf(String(`${doc.data().Favorite[i]}`)) != 1){
+                        var c = 0;
+                        for (let i = 0; i < 16; i++) {
+                            if (Number(NMovie) !== Number(`${doc.data().Favorite[i]}`)) {
+                                Up.update({
+                                    Favorite: firebase.firestore.FieldValue.arrayUnion(NMovie)
+                                }).then(function () {
+                                    console.log("Document successfully updated!");
+                                })
+                                    .catch(function (error) {
+                                        console.error("Error updating document: ", error);
+                                    });
+                            } else if (Number(NMovie) === Number(`${doc.data().Favorite[i]}`)) {
+                                c = 1;
+                            }
+                        }
+                        if (c === 1) {
                             Up.update({
                                 Favorite: firebase.firestore.FieldValue.arrayRemove(NMovie)
+                            }).then(function () {
+                                console.log("Document successfully Remove!");
                             })
+                                .catch(function (error) {
+                                    console.error("Error updating document: ", error);
+                                });
                         }
+                        $("#datafavorite").empty();
+                        favorite()
                     }
-                    }
+
                 }
+                )
             })
         }
-        )
     })
 }

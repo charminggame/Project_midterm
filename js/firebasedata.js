@@ -1,4 +1,4 @@
-function test() {
+function test1() {
     var db = firebase.firestore();
     db.collection("movie").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -8,6 +8,13 @@ function test() {
                     <p>
                         ${doc.data().Detail}
                     </p>
+                    <button type="button" class="btn btn-danger" onclick="Addremove(${doc.data().N})">
+                    <div class="row">
+                      &nbsp&nbsp
+                    <ons-icon icon="md-favorite" size="40px"></ons-icon>
+                    <h2>&nbspFavorite&nbsp&nbsp</h2>
+                    </div>
+                    </button>
                     <h1>Trailer</h1>
                     <iframe src="${doc.data().Trailer}" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
