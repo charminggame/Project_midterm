@@ -197,3 +197,9 @@ body>*+* {
     background-color: #262626;
     color: white;
 }
+
+.play {
+    font-size: 25px;
+    margin-top: 10px;
+    background-color: red;
+}
