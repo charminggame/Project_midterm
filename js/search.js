@@ -9,7 +9,7 @@ function Searchmovie() {
       const rptitlemovie = title.replace(/ /g, "");
       var card = `
 <div class="card mb-3" style="max-width: 540px;">
-<div class="row no-gutters" id="s${doc.data().N}">
+<div class="row no-gutters">
     <div class="col">
     <div>
       <img src="${doc.data().Poster}" class="card-img">
@@ -18,6 +18,11 @@ function Searchmovie() {
     <div class="col">
       <div class="card-body">
         <h5 class="card-title">${doc.data().Title}</h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card-body">
+      <button type="button" class="btn btn-outline-dark" id="b5" style="width: 80px;" onclick="buttonsearch(0)">All</button>
       </div>
     </div>
   </div>
@@ -47,6 +52,11 @@ function buttonsearch(N) {
     <div class="col">
       <div class="card-body">
         <h5 class="card-title">${doc.data().Title}</h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card-body">
+        <ons-icon icon="md-favorite" size="40px" onclick="test2(${doc.data().N})"></ons-icon>
       </div>
     </div>
   </div>

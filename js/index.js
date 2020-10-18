@@ -62,10 +62,13 @@ document.addEventListener('init', function (event) {
         page.querySelector('#signout').onclick = function () {
             signout()
         }
+    }   
+    else if (page.id === 'favorite') {
+        favorite()
     }
     // else if (page.id === 'search') {
     //     if (typeof page.querySelector('#s1') === "object") {
-            
+
     //     } else {
     //         page.querySelector('#s1').onclick = function () {
     //             test()
@@ -135,17 +138,31 @@ $(function () {
     })
 })
 
-function test2(){
+function test2(NMovie) {
     var db = firebase.firestore();
     var Up = db.collection("Profile").doc("charminggame@hotmail.com");
-    Up.update({
-        regions: firebase.firestore.FieldValue.arrayUnion("1")
-    });
-    then(function() { 
-        console.log("Document successfully written!");
+    db.collection("Profile").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            var Pemail = `${doc.data().Email}`
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    var email = user.email;
+                    if (email === Pemail) {
+                        for(let i = 0; i < 16 ; i++){
+                        if (String(NMovie).indexOf(String(`${doc.data().Favorite[i]}`)) != -1) {
+                            Up.update({
+                                Favorite: firebase.firestore.FieldValue.arrayUnion(NMovie)
+                            })
+                        } else if (String(NMovie).indexOf(String(`${doc.data().Favorite[i]}`)) != 1){
+                            Up.update({
+                                Favorite: firebase.firestore.FieldValue.arrayRemove(NMovie)
+                            })
+                        }
+                    }
+                    }
+                }
+            })
+        }
+        )
     })
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
-    
 }
