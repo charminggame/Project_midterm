@@ -170,14 +170,17 @@ function Addremove(NMovie) {
                             })
                                 .catch(function (error) {
                                     console.error("Error updating document: ", error);
-                            });
+                                });
                         }
-                        $("#datafavorite").empty();
-                        favorite()
+
                     }
 
                 }
                 )
+
+            }).then(function () {
+                $("#datafavorite").empty();
+                favorite()
             })
         }
     })
